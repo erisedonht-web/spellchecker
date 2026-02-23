@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サモナーズスペルチェッカー - 敵フラッシュ管理</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1 class="title">サモナーズスペルチェッカー</h1>
+      <nav class="nav">
+        <button type="button" class="nav-btn active" data-screen="tracker">トラッカー</button>
+        <button type="button" class="nav-btn" data-screen="settings">設定</button>
+      </nav>
+      <div class="display-format">
+        <span class="display-format-label">表示:</span>
+        <button type="button" class="format-btn active" data-format="seconds" title="秒のみ">秒</button>
+        <button type="button" class="format-btn" data-format="mmss" title="分:秒">分:秒</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- 画面1: トラッカー -->
+      <section class="screen screen-tracker active" id="screen-tracker">
+        <p class="subtitle">敵チーム フラッシュ</p>
+        <div class="lanes" id="lanes">
+          <div class="lane" data-role="top">
+            <div class="lane-role">Top</div>
+            <div class="lane-options">
+              <button type="button" class="toggle-btn small lane-toggle" data-role="top" data-option="cosmic" title="宇宙の叡智 18ヘイスト" aria-pressed="false">✦</button>
+              <button type="button" class="toggle-btn small lane-toggle" data-role="top" data-option="ionian" title="アイオニア 10ヘイスト" aria-pressed="false">👢</button>
+            </div>
+            <button type="button" class="flash-btn" data-role="top">Flash 使用</button>
+            <div class="lane-timer" data-role="top">
+              <span class="timer-text">Ready</span>
+              <span class="timer-bar" data-role="top"></span>
+            </div>
+            <button type="button" class="btn-reset-lane" data-role="top">リセット</button>
+          </div>
+          <div class="lane" data-role="jungle">
+            <div class="lane-role">Jungle</div>
+            <div class="lane-options">
+              <button type="button" class="toggle-btn small lane-toggle" data-role="jungle" data-option="cosmic" title="宇宙の叡智 18ヘイスト" aria-pressed="false">✦</button>
+              <button type="button" class="toggle-btn small lane-toggle" data-role="jungle" data-option="ionian" title="アイオニア 10ヘイスト" aria-pressed="false">👢</button>
+            </div>
+            <button type="button" class="flash-btn" data-role="jungle">Flash 使用</button>
+            <div class="lane-timer" data-role="jungle">
+              <span class="timer-text">Ready</span>
+              <span class="timer-bar" data-role="jungle"></span>
+            </div>
+            <button type="button" class="btn-reset-lane" data-role="jungle">リセット</button>
+          </div>
+          <div class="lane" data-role="mid">
+            <div class="lane-role">Mid</div>
+            <div class="lane-options">
+              <button type="button" class="toggle-btn small lane-toggle" data-role="mid" data-option="cosmic" title="宇宙の叡智 18ヘイスト" aria-pressed="false">✦</button>
+              <button type="button" class="toggle-btn small lane-toggle" data-role="mid" data-option="ionian" title="アイオニア 10ヘイスト" aria-pressed="false">👢</button>
+            </div>
+            <button type="button" class="flash-btn" data-role="mid">Flash 使用</button>
+            <div class="lane-timer" data-role="mid">
+              <span class="timer-text">Ready</span>
+              <span class="timer-bar" data-role="mid"></span>
+            </div>
+            <button type="button" class="btn-reset-lane" data-role="mid">リセット</button>
+          </div>
+          <div class="lane" data-role="adc">
+            <div class="lane-role">ADC</div>
+            <div class="lane-options">
+              <button type="button" class="toggle-btn small lane-toggle" data-role="adc" data-option="cosmic" title="宇宙の叡智 18ヘイスト" aria-pressed="false">✦</button>
+              <button type="button" class="toggle-btn small lane-toggle" data-role="adc" data-option="ionian" title="アイオニア 10ヘイスト" aria-pressed="false">👢</button>
+            </div>
+            <button type="button" class="flash-btn" data-role="adc">Flash 使用</button>
+            <div class="lane-timer" data-role="adc">
+              <span class="timer-text">Ready</span>
+              <span class="timer-bar" data-role="adc"></span>
+            </div>
+            <button type="button" class="btn-reset-lane" data-role="adc">リセット</button>
+          </div>
+          <div class="lane" data-role="support">
+            <div class="lane-role">Support</div>
+            <div class="lane-options">
+              <button type="button" class="toggle-btn small lane-toggle" data-role="support" data-option="cosmic" title="宇宙の叡智 18ヘイスト" aria-pressed="false">✦</button>
+              <button type="button" class="toggle-btn small lane-toggle" data-role="support" data-option="ionian" title="アイオニア 10ヘイスト" aria-pressed="false">👢</button>
+            </div>
+            <button type="button" class="flash-btn" data-role="support">Flash 使用</button>
+            <div class="lane-timer" data-role="support">
+              <span class="timer-text">Ready</span>
+              <span class="timer-bar" data-role="support"></span>
+            </div>
+            <button type="button" class="btn-reset-lane" data-role="support">リセット</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 画面2: 設定 -->
+      <section class="screen screen-settings" id="screen-settings">
+        <p class="subtitle">設定</p>
+        <div class="settings-block">
+          <h2>CD短縮オプション</h2>
+          <p class="hint">各ロールのカードで「✦」宇宙の叡智、「👢」アイオニアのブーツをオン/オフできます。敵が持っている場合にオンにすると、そのロールの実際のCDでカウントダウンします。</p>
+        </div>
+        <div class="settings-block">
+          <h2>操作</h2>
+          <button type="button" class="btn-reset" id="reset-all">全タイマーリセット</button>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
